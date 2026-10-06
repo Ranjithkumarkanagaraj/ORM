@@ -4,7 +4,7 @@
 ## AIM
 To develop a Django Application to store and retrieve data from a Vehicle Service Database platform using Object Relational Mapping(ORM).
 
-## ENTITY RELATIONSHIP DIAGRAM
+
 
 
 
@@ -36,10 +36,35 @@ Execute Django admin using localhost and create details for 10 entries
 
 ## PROGRAM
 
+```
+models.py
+from django.db import models
+from django.contrib import admin
+class vehicle_DB(models.Model):
+    Number_plate=models.CharField(max_length=15,primary_key=True)
+    Issues=models.TextField()
+    Name=models.CharField(max_length=10)
+    Mobile_no=models.IntegerField()
+    Address=models.TextField()
+    Date=models.DateField()
+    Day=models.CharField(max_length=15)
+class vehicle_DBAdmin(admin.ModelAdmin):
+    list_display=["Number_plate","Issues","Name","Mobile_no","Address","Date","Day"]
+    
+
+admin.py
+from django.contrib import admin
+from .models import vehicle_DB,vehicle_DBAdmin
+admin.site.register(vehicle_DB,vehicle_DBAdmin)    
+
+
+```
+
 
 
 ## OUTPUT
 
+![alt text](image.png)
 
 
 ## RESULT
